@@ -31,7 +31,7 @@ export default function FormScreen({ navigation }) {
         placeholder="Digite seu Email"
         value={email}
         onChangeText={setEmail}
-        keyboardtType= 'email-adress'
+        keyboardType="email-address"
       />
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>

@@ -59,30 +59,29 @@ export default function HomeScreen({ navigation }) {
   setTaskToDelete(null);
 };
 
-  const renderItem = ({ item }) => {
-    const isLocal = typeof item.id === 'string';
+const renderItem = ({ item }) => {
+  const isLocal = typeof item.id === 'string';
 
-      return (
+  return (
     <>
       <Text style={styles.sourceText}>
-        {item.userId ? 'Local' : 'API'}
+        {item.userId ? 'API' : 'Local'}
       </Text>
       <TaskCard
         title={item.title}
+        description={item.description}
         completed={item.completed}
         onPress={isLocal ? () => navigation.navigate('Details', { task: item }) : null}
         onToggle={isLocal ? () => toggleTaskCompletion(item.id) : null}
-        onDelete={() => {
-          if (isLocal) {
-            setTaskToDelete(item.id);
-            setModalVisible(true);
-          }
-        }}
+        onDelete={isLocal ? () => {
+          setTaskToDelete(item.id);
+          setModalVisible(true);
+        } : null}
+        isLocal={isLocal}
       />
     </>
   );
 };
-
   return (
 
   <View style={styles.container}>
@@ -198,4 +197,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-});
+  sourceText: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    color: '#999',
+    marginBottom: 4,
+    marginLeft: 5,
+  }
+})

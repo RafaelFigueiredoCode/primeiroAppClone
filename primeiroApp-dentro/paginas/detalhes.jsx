@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Alert } from '
 
 
 export default function DetailsScreen({navigation, route}){
-    const { item }= route.params || {}
+    const { task: item } = route.params || {};
     return(
         <View style= {styles.container}>
             <Text style= {styles.title}>Detalhes do Item</Text>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f5f5f5',
-        alignitems: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
     },
